@@ -14,8 +14,17 @@ namespace MainApp.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var translatedText = await _translationService.TranslateAsync("Hello");
-            ViewData["TranslatedText"] = translatedText;
+            var translations = new[]
+            {
+                await _translationService.TranslateAsync("Hello"),
+                await _translationService.TranslateAsync("Goodbye"),
+                await _translationService.TranslateAsync("Please"),
+                await _translationService.TranslateAsync("Thank you"),
+                await _translationService.TranslateAsync("Yes"),
+                await _translationService.TranslateAsync("No")
+            };
+
+            ViewData["Translations"] = translations;
             return View();
         }
     }

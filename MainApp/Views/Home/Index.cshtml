@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var translations = ViewData["Translations"] as string[];
 }
 
 <div class="text-center">
@@ -7,5 +8,14 @@
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 <div>
-    <h1>Translated Text: @ViewData["TranslatedText"]</h1>
+    <h1>Translated Texts:</h1>
+    <ul>
+        @if (translations != null)
+        {
+            foreach (var translation in translations)
+            {
+                <li>@translation</li>
+            }
+        }
+    </ul>
 </div>
